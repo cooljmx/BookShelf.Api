@@ -1,0 +1,8 @@
+services:
+  bookshelf.api:
+    image: bookshelfapi:1.0.0
+    build:
+        context: .
+        dockerfile: BookShelf.Api/Dockerfile
+    ports:
+        - "50000:80"
