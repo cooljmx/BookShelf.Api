@@ -5,7 +5,7 @@ namespace BookShelf.Api.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class AuthorController : ControllerBase
+public sealed class AuthorController : ControllerBase
 {
     [HttpGet]
     [Route("all")]

@@ -1,6 +1,6 @@
 ﻿namespace BookShelf.Api.Responses.Authors;
 
-public class AuthorResponse
+public sealed class AuthorResponse
 {
     public required int Id { get; init; }
     public required string FirstName { get; init; }

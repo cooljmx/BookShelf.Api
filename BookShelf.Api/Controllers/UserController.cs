@@ -6,7 +6,7 @@ namespace BookShelf.Api.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class UserController : ControllerBase
+public sealed class UserController : ControllerBase
 {
     private readonly ILoginService _loginService;
 

@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace BookShelf.Api.Security;
 
-internal class LoginService : ILoginService
+internal sealed class LoginService : ILoginService
 {
     private readonly UserManager<User> _userManager;
 

@@ -1,5 +1,5 @@
 ﻿namespace BookShelf.Api.Responses.User;
 
-public class LoginResponse
+public sealed class LoginResponse
 {
 }

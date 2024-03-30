@@ -2,7 +2,7 @@
 
 namespace BookShelf.Api.Security;
 
-internal class UserStore : IUserPasswordStore<User>
+internal sealed class UserStore : IUserPasswordStore<User>
 {
     private readonly List<User> _users = new()
     {

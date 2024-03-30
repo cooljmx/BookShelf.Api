@@ -3,7 +3,7 @@ using BookShelf.Api.Security;
 
 namespace BookShelf.Api;
 
-public class RegistrationModule : Module
+public sealed class RegistrationModule : Module
 {
     protected override void Load(ContainerBuilder builder)
     {
