@@ -5,4 +5,4 @@ services:
         context: .
         dockerfile: BookShelf.Api/Dockerfile
     ports:
-        - "50000:80"
+        - "50000:8080"
