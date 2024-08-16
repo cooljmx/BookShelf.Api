@@ -1,10 +1,12 @@
 ﻿using BookShelf.Api.Responses.Authors;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookShelf.Api.Controllers;
 
 [ApiController]
 [Route("[controller]")]
+[Authorize]
 public sealed class AuthorController : ControllerBase
 {
     [HttpGet]

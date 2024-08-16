@@ -2,7 +2,7 @@
 
 namespace BookShelf.Api.Security;
 
-internal sealed class UserStore : IUserPasswordStore<User>
+internal sealed class UserStore : IUserPasswordStore<User>, IUserEmailStore<User>
 {
     private readonly List<User> _users = new()
     {
@@ -12,6 +12,44 @@ internal sealed class UserStore : IUserPasswordStore<User>
             PasswordHash = "AQAAAAIAAYagAAAAEEYgIVlVPFcdOlWYTG83QPrSK2p/E5SCwYso/xmBpHvGFMnDCA+YW347Uz9737NO3A=="
         }
     };
+
+    public Task SetEmailAsync(User user, string? email, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<string?> GetEmailAsync(User user, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<bool> GetEmailConfirmedAsync(User user, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task SetEmailConfirmedAsync(User user, bool confirmed, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<User?> FindByEmailAsync(string normalizedEmail, CancellationToken cancellationToken)
+    {
+        var user = _users.FirstOrDefault(user =>
+            string.Equals(user.Email, normalizedEmail, StringComparison.OrdinalIgnoreCase));
+
+        return Task.FromResult(user);
+    }
+
+    public Task<string?> GetNormalizedEmailAsync(User user, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task SetNormalizedEmailAsync(User user, string? normalizedEmail, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
 
     public Task<string> GetUserIdAsync(User user, CancellationToken cancellationToken)
     {
@@ -60,10 +98,7 @@ internal sealed class UserStore : IUserPasswordStore<User>
 
     public Task<User?> FindByNameAsync(string normalizedUserName, CancellationToken cancellationToken)
     {
-        var user = _users.FirstOrDefault(user =>
-            string.Equals(user.Email, normalizedUserName, StringComparison.InvariantCultureIgnoreCase));
-
-        return Task.FromResult(user);
+        throw new NotImplementedException();
     }
 
     public Task SetPasswordHashAsync(User user, string? passwordHash, CancellationToken cancellationToken)

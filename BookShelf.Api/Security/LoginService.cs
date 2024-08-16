@@ -6,16 +6,19 @@ namespace BookShelf.Api.Security;
 
 internal sealed class LoginService : ILoginService
 {
+    private readonly IJwtTokenGenerator _jwtTokenGenerator;
     private readonly UserManager<User> _userManager;
 
-    public LoginService(UserManager<User> userManager)
+    public LoginService(UserManager<User> userManager,
+        IJwtTokenGenerator jwtTokenGenerator)
     {
         _userManager = userManager;
+        _jwtTokenGenerator = jwtTokenGenerator;
     }
 
     public async Task<LoginResponse?> LoginAsync(LoginRequest request)
     {
-        var user = await _userManager.FindByNameAsync(request.Email);
+        var user = await _userManager.FindByEmailAsync(request.Email);
 
         if (user == null)
             return null;
@@ -25,6 +28,9 @@ internal sealed class LoginService : ILoginService
         if (!isPasswordValid)
             return null;
 
-        return new LoginResponse();
+        return new LoginResponse
+        {
+            Token = _jwtTokenGenerator.Generate(user.Email)
+        };
     }
 }
